@@ -40,12 +40,12 @@ for i in range(num_of_pages):
                     "position_type": player["position"]["positionType"]["name"],
                     "position_short_label": player["position"]["shortLabel"],
                     "position_label": player["position"]["label"],
-                    "alternate_positions": ", ".join([position["shortLabel"] for position in player["alternatePositions"]]),  # Convertir lista a cadena
+                    "alternate_positions": ", ".join([position["shortLabel"] for position in player.get("alternatePositions", []) or []]),  # Convertir lista a cadena
                     "preferred_foot": player["preferredFoot"],
                     "league_name": player["leagueName"],
                     "team_label": player["team"]["label"],
                     "team_image_url": player["team"]["imageUrl"],
-                    "player_abilities": ", ".join([ability_info["label"] for ability_info in player["playerAbilities"]]),  # Convertir lista a cadena
+                    "player_abilities": ", ".join([ability_info["label"] for ability_info in player.get("playerAbilities", []) or []]),  # Convertir lista a cadena
                     "weak_foot_ability": player["weakFootAbility"],
                     "skill_moves": player["skillMoves"],
                     "overall_rating": player["overallRating"]
@@ -67,7 +67,7 @@ for i in range(num_of_pages):
     except Exception as e:
         print(f"Unexpected error at iteration {i}: {e}")
 
-    
+    print(f"Players from page {i} has been extracted")
     offset += 100 # Increment the offset for the next page
 
 
@@ -79,3 +79,4 @@ file_name = 'fcplayers_0'
 df.to_csv(os.path.join('data','raw', f"{file_name}.csv"), encoding='utf-8', index=False)
 
 print(f"Data saved to {file_name}.csv")
+print(f"Last offset: {offset}")
