@@ -75,7 +75,7 @@ for i in range(num_of_pages):
 df = pd.DataFrame(players_list)
 
 # Save the players data into a CSV file after each iteration
-file_name = 'fcplayers_0'
+file_name = 'fcplayers'
 df.to_csv(os.path.join('data','raw', f"{file_name}.csv"), encoding='utf-8', index=False)
 
 print(f"Data saved to {file_name}.csv")
