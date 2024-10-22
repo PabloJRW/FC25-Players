@@ -84,8 +84,8 @@ for i in range(num_of_pages):
 df = pd.DataFrame(players_list)
 
 # Save the players data into a CSV file after each iteration
-file_name = 'fc25players_10_21_2024_2'
-df.to_csv(os.path.join('extraction','raw_data', f"{file_name}.csv"), encoding='utf-8', index=False)
+#file_name = 'fc25players_10_21_2024_2'
+#df.to_csv(os.path.join('extraction','raw_data', f"{file_name}.csv"), encoding='utf-8', index=False)
 
-print(f"Data saved to {file_name}.csv")
+#print(f"Data saved to {file_name}.csv")
 print(f"Last offset: {offset}")
