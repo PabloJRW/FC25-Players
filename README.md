@@ -1,6 +1,6 @@
-# Proyecto ETL: FC25 Players
+# FC25 Players: ETL Project
 
-This project involves the extraction, transformation, and loading (ETL) of player data from the official FC25 game website using its API. The data is then transformed and loaded nto a PostgreSQL database for analysis and reporting.
+This project involves the extraction, transformation, and loading (ETL) of player data from the official FC25 game website using its API. The data is then transformed and loaded into a PostgreSQL database for analysis and reporting.
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
@@ -14,12 +14,13 @@ This project involves the extraction, transformation, and loading (ETL) of playe
 9. [License](#license)
 
 ## Project Overview
-The main goal of this project is to gather data on FC25 players, transform it for proper structure and analysis, and store it in a PostgreSQL  database. The data is extracted via API, cleaned and transformed according to defined rules, and then loaded  into the database.
+The main goal of this project is to gather data on FC25 players, transform it for proper structure and analysis, and store it in a PostgreSQL database. The data is extracted via API, cleaned and transformed according to defined rules, and then loaded  into the database.
 
 ### Key Features
 - Extract data from the FC25 API.
 - Cleans and transforms the data to ensure consistency.
 - Loads the data into a PostgreSQL database.
+- Splits the main table into normalized tables.
 - Each task is executed individually to allow for modular control of the ETL process.
 
 ## Requirements
@@ -35,7 +36,7 @@ To run this project, you need:
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone hhtps://github/PabloJRW/FC25-Players.git
+   git clone git@github.com:PabloJRW/FC25-Players-ETL.git
    cd FC25-Players-ETL
    ```
 2. Install the required libraries:
@@ -44,32 +45,35 @@ To run this project, you need:
    ```
 3. Set up the PostgreSQL database:
 - Create a new PostgreSQL database.
-- Update the database configuration in the project (see Configuration section).
+- Update the database configuration in the project ([see Configuration section](#configuration)).
 
 ## Usage
 Each step of the ETL process needs to be run individually. Follow these steps to execute each task:
-1. Extract data:
+1. **Extract data:**
 ```bash
-python extract_data.py
+python extraction/scripts/extract.py
 ```
-2. Transform data:
+
+2. **Transform data:**
 ```bash
-python transform_data.py
+python transformation/scripts/extract.py
 ```
-3. Load data to the database:
+
+3. **Load data to the database:**  
 ```bash
-python load_data.py
+python loading/scripts/load.py
 ```
+
 Make sure to run these scripts in the correct order for the data to be properly extracted, transformed, and loaded.
 
 ## ETL Steps
-1. Extraction:
-- Retrieves player data from the FC25 API in JSON format.
-2. Transformation:
-- Cleans the data, handles missing values, and converts data types.
-- Applies specific transformation rules to prepare the data for the database.
-3. Loading:
-- Inserts the transformed data into the PostgreSQL database.
+1. **Extraction:**
+    - Retrieves player data from the FC25 API in JSON format.
+2. **Transformation:**
+    - Cleans the data, handles missing values, and converts data types.
+    - Applies specific transformation rules to prepare the data for the database.
+3. **Loading:**
+    - Inserts the transformed data into the PostgreSQL database.
 
 ## Configuration
 
@@ -81,8 +85,6 @@ DB_PORT=5432                  # The port for your PostgreSQL database
 DB_NAME=your_db_name          # The name of your PostgreSQL database
 DB_USER=your_db_user          # Your PostgreSQL username
 DB_PASSWORD=your_db_password  # Your PostgreSQL password
-
-FC25_API_URL=https://api.fc25game.com/players  # The API URL for FC25 player data
 ```
 
 You can customize these settings according to your environment.
@@ -107,7 +109,7 @@ FC25-Players/
 │   └── transformation_test.ipynb  # Jupyter notebook for testing data transformation
 ├── requirements.txt               # File listing required Python libraries for the project
 ├── README.md                      # Project documentation providing an overview and instructions
-├── .env                           # Configuration file (not included in the repo for security reasons).
+├── .env                           # Database credentials (not included in the repo for security reasons).
 └── fc25venv                       # Virtual environment directory for managing project dependencies
 ```
 
