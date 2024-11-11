@@ -37,13 +37,16 @@ To run this project, you need:
 1. Clone the repository:
    ```bash
    git clone git@github.com:PabloJRW/FC25-Players-ETL.git
+   ```
+2. Navigate to the project directory:
+   ```bash
    cd FC25-Players-ETL
    ```
-2. Install the required libraries:
+3. Install the required libraries:
    ```bash
    pip install -r requirements.txt
    ```
-3. Set up the PostgreSQL database:
+4. Set up the PostgreSQL database:
 - Create a new PostgreSQL database.
 - Update the database configuration in the project ([see Configuration section](#configuration)).
 
@@ -108,9 +111,8 @@ FC25-Players/
 │   ├── extraction.py              # Test script for verifying extraction functionality
 │   └── transformation_test.ipynb  # Jupyter notebook for testing data transformation
 ├── requirements.txt               # File listing required Python libraries for the project
-├── README.md                      # Project documentation providing an overview and instructions
-├── .env                           # Database credentials (not included in the repo for security reasons).
-└── fc25venv                       # Virtual environment directory for managing project dependencies
+└── README.md                      # Project documentation providing an overview and instructions
+
 ```
 
 ## Contributing
